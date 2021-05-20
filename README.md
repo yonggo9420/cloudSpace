@@ -56,8 +56,9 @@ ThinkPHP® 商标和著作权所有者为上海顶想信息科技有限公司。
 更多细节参阅 [LICENSE.txt](LICENSE.txt)
 
 数据库
-
 ===============
+
+~~~
 CREATE DATABASE `s0792839`;
 
 CREATE TABLE `xukekey`  (
@@ -79,3 +80,4 @@ CREATE TABLE `xukekey`  (
 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 SET FOREIGN_KEY_CHECKS = 1;
+~~~
