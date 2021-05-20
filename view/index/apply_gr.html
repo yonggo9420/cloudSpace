@@ -1,0 +1,98 @@
+
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0,user-scalable=no,minimal-ui">
+  <link rel="stylesheet" href="/static/css/index_apply/apply.css">
+    <script src="/static/layui.js"></script>
+</head>
+<body>
+
+<div class="login-box">
+  <h2>个人空间申请</h2>
+  <form>
+      
+    <div class="user-box">
+      <input type="text" id="name" required="required">
+      <label>姓名</label>
+    </div>
+    <div class="user-box">
+      <input type="number" id="xuehao" required="required">
+      <label>学号</label>
+    </div>    
+    <div class="user-box">
+      <input type="text" id="password" required="required">
+      <label>密码</label>
+    </div>
+       <input hidden id="yontu" value="个人" >
+    <a onClick="index()" >
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      申请
+    </a> 
+  </form>
+</div>
+</body>
+<script>
+    function index(){
+    layui.use(['layer','jquery'],function(){
+              var $ =layui.jquery,
+              layer = layui.layer;
+             
+        if($('#name').val()&&$('#xuehao').val()&&$('#password').val())
+           {
+           
+           
+              var name =$('#name').val();
+              var xuehao =$('#xuehao').val();
+              var password =$('#password').val();
+              var yontu =$('#yontu').val();
+        $.post("/Index/backstage_YKJ",{task:'2',name:name,yontu:yontu,xuehao:xuehao,password:password},function(result,status)
+				{ 
+            var obj =JSON.parse(result);
+             if(obj.code==0)
+           {
+              layer.alert("<em style='color:red; font-size=20px'>" +obj.msg+ "</em>",{title:'ID'},function(index)
+                {
+                 layer.close(index);
+				      layer.msg("正在打开空间....",function(){
+                window.location.href="/taskShowController/grYKJ"; 
+                      
+                          });
+              });
+                          
+           }
+            else
+            {
+                layer.msg(obj.msg);
+            }
+        });	
+           }else
+            {
+                layer.msg('请将表单填写完整！');
+                
+            }
+    
+        
+  
+              
+              
+              });
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    </script>
+</html>

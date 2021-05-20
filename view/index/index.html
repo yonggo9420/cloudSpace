@@ -1,0 +1,700 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0">
+		<meta content="telephone=no" name="format-detection" />
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<title>{$title}</title>
+		<link rel="stylesheet" href="/static/css/layui.css" media="all">
+
+		<link rel="stylesheet" href="/static/css/main.css" >
+		<script src="/static/layui.js"></script>
+	
+		<style> 
+			
+		.flex-container {
+			display: -webkit-flex;
+			display: flex;
+
+			 margin: auto;
+
+		}
+		.flex-item {
+			background-color: cornflowerblue;
+			width: 100px;
+			height: 100px;
+			margin: auto;
+		}
+		.juzhon {
+			position: absolute;
+			width:400px;
+			height:200px;
+			left:50%;
+			top:50%; 
+			margin-left:-200px;
+			margin-top:-100px;
+			} 
+		</style>
+	</head>
+<body> 
+	
+		
+		<!-- Sidebar -->
+			<section id="sidebar" style="background-color: rgba(255, 255, 255, 0);">
+				<div class="inner">
+					<nav>
+						<ul>
+							<li><a href="#intro" class="scrolly active">欢迎</a></li>
+							<li><a href="#one" class="scrolly">功能介绍</a></li>
+							<li><a href="#two" class="scrolly">关于项目</a></li>
+							<li><a href="#three" class="scrolly">联系我们</a></li>
+						</ul>
+					</nav>
+				</div>
+			</section>
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Intro -->
+					<section id="intro" class="wrapper style1 fullscreen fade-up" style="background-color: rgba(255, 255, 255, 0);">
+						
+						<div class="inner">
+							<h1>感谢你的访问 <span  class="layui-icon layui-icon-face-smile" style="font-size: 60px; color: #1E9FFF;"></span></h1>
+							
+							<p> 还在为上课需要保存资料但没带U盘而烦恼吗？<br>
+							那么请使用临时云空间吧，只需要一个浏览器就可以随时随地保存文件<br>
+                                                        </p>
+							<ul class="actions">
+								<li><button onClick="apply()" class="button scrolly">申请云空间</button></li>
+								
+								
+                                        <li><button onclick="grYKJ()" class="button scrolly" style="background: #393D49">个人空间</button></li>
+						<li><button onClick="classYKJ()" class="button scrolly" style="background: #1E9FFF">班级空间</button></li>
+						<li><button onClick="delecookie()" class="button scrolly" style="background: #1E9FFF">清除本地数据</button></li>
+							</ul>
+							
+							<li><button onClick="share()" class="button scrolly">共享空间</button></li> 
+						</div>
+					</section>
+
+				 
+					<section id="one" class="wrapper style2 spotlights" style="background-color: rgba(255, 255, 255, 0);">
+						<section class="">
+							
+							<div class="content">
+								<div class="inner">
+									<h2>文件云端管理</h2>
+									学生自主上传资料到云端，减轻管理员压力。
+								</div>
+							</div>
+						</section>
+					
+				</section>
+						
+				 				<!-- Two -->
+					<section id="two" class="wrapper style3 fade-up" style=" background-color: rgba(255, 255, 255, 0);">
+						<div class="inner">
+							<h2>关于本项目</h2>
+							<p></p>
+							<div class="features">
+								<section>
+									<span class="icon solid major "></span>
+									<h3>简单又方便的收作业方式</h3>
+									<p>在特殊环境中，没有社交软件没有U盘，也不会陷入没办法和小伙伴分享资料的境地啦，保存资料仅仅需要一条网址和一个浏览器，就是这么简单！</p>
+								</section>
+								<section>
+									<span class="icon solid major "></span>
+									<h3>弱身份验证</h3>
+									<p>本站不建议用户保存特别重要的数据在本站，为了提高使用效率和方便性，本站身份验证仅仅用于用户标识，没有类似百度云盘等盘的多重身份验证，密保等功能，虽然提高了方便性，但安全性并不高，所以建议仅用于临时文件资料的保存</p>
+								</section>
+								<section>
+									<span class="icon solid major "></span>
+									<h3>公益项目</h3>
+									<p>出于开发者个人的兴趣爱好和乐于助人服务大众的目的，本项目非盈利性项目</p>
+								</section>
+								
+							
+							</div>
+						
+						</div>
+					</section>
+
+				<!-- Three -->
+					<section id="three" class="wrapper style1 fade-up inactive" style="background-color: rgba(255, 255, 255, 0);">
+						<div class="inner">
+							<h2>问题反馈</h2>
+					
+							<div class="split style1">
+							</div>
+						</div>
+					</section>
+
+			</div>
+		<script src="/static/js/breakpoints.min.js"></script>
+		<script src="/static/js/browser.min.js"></script>
+		<script src="/static/js/jquery.min.js" ></script>
+		<script src="/static/js/jquery.scrollex.min.js" ></script>
+		<script src="/static/js/jquery.scrolly.min.js" ></script>
+		<script  src="/static/js/main.js" ></script>
+</body>
+	<script>
+		
+			//-------------------------------------左下角按钮---------------
+	$('#button').click(function(){
+  //var buttonId = $(this).attr('id');
+  $('#modal-container').removeAttr('class').addClass('one');
+  $('body').addClass('modal-active');
+})
+	
+	
+	$('#modal-container').click(function(){
+  $(this).addClass('out');
+  $('body').removeClass('modal-active');
+});
+//-------------------------------------左下角按钮---------------
+	
+		
+		
+	function share()
+	{
+		  layui.use(['jquery','layer'], function()
+							{
+							 var $ = layui.jquery,
+							layer = layui.layer;
+			  layer.prompt({title: '请输入共享口令', formType: 1}, function(sharekey, index)
+					{
+		//先判断是否开通
+		$.post('/taskShowController/sharemain',{task:2,sharekey:sharekey},function(res){
+			var obj = JSON.parse(res);
+			if(obj.code=='0')
+            {
+				    layer.close(index);
+             	window.location.href= "/taskShowController/share_task_show";
+			   }
+			else
+			{
+				  layer.msg(obj.msg,function(){layer.close(index);});	
+				
+			}
+		});
+		});
+			
+	});			
+			
+	}
+		
+		
+		
+//------------------------------------清除本地cookie方法-----------------------------------------------
+function delecookie()
+	{
+			  layui.use(['jquery','layer'], function()
+			{
+			 var $ = layui.jquery,
+			layer = layui.layer;
+					layer.alert('<span style= "color:red">清除本地登录数据后，需要您重新输入口令等信息才能进入云空间哦</span>', {
+			  skin: 'layui-layer-molv' //样式类名
+			  ,closeBtn: 1
+				,anim: 4 //动画类型
+			}, function(){
+			  $.post("Index/delecookie",function(result){
+				  layer.msg(result);
+				  
+			  			});  
+				 });
+			  
+			  });
+			
+	}	
+//-------------------------------------------结束-----------------------------------------------	
+
+		
+		
+//------------------------------------个人云空间方法-------------------------------------------
+function grYKJ()
+{
+	layui.use(['jquery','layer'],function()
+		{
+			var $ = layui.jquery,
+			layer = layui.layer;
+		
+			$.post("/taskShowController/Index",function(res)
+			{
+				if(res=="ok")
+				{
+				window.location.href="/taskShowController/grYKJ";
+				}
+				else
+				{
+					layer.prompt({title:'请输入您的学号',formType:3}, function(xuehao, index)//弹出窗口获取学号
+						{
+							layer.close(index);//关闭窗口
+							layer.prompt({title:'请输入登录密码',formType:3},function(password, index)
+								{
+									layer.close(index);
+									$.post("/taskShowController/Index",{xuehao:xuehao,password:password},function(result)
+									{
+									 if(result=="ok")
+										{
+											
+
+												window.location.href="/taskShowController/grYKJ";
+												
+										
+
+										}
+									  	else
+										{
+											layer.msg(result);
+										}
+				  
+			  						});
+			  
+			  					}); 
+						});	   
+					}   
+				});  
+		});		
+}
+//-----------------------------------------结束---------------------------------------------------------------
+	
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+/*/-----------------------------------------申请云空间方法---------------------------------------------------------------
+ function YKJ()
+ 	{
+	  layui.use(['jquery','layer'], function()
+	{
+	 var $ = layui.jquery,
+	layer = layui.layer;
+    layer.prompt({title: '请输入云空间用途(请填写收作业或者个人)', formType: 3}, function(yontu, index)//弹出窗口获取学号
+		{
+			if(yontu=="收作业"||yontu=="个人"){
+			layer.close(index);//关闭窗口
+			layer.prompt({title: '请输入您的姓名', formType: 3}, function(name, index)//弹出窗口获取学号
+			{
+				layer.close(index);//关闭窗口
+				layer.prompt({title: '请输入您的学号', formType: 3}, function(xuehao, index)//弹出窗口获取学号
+				{
+					layer.close(index);//关闭窗口
+					layer.prompt({title:'请设置登录密码',formType:3},function(password, index)
+						{
+                  if(password!=0){
+				        layer.close(index);
+							if(yontu!="个人"){
+							layer.prompt({title: '请输入所在班级(例:xxx类xxx班)', formType: 3}, function(banji, index)
+								{
+									layer.close(index);//关闭窗口
+									layer.prompt({title: '班级的统一口令(将口令给本班同学，用于验证是否是本班学生)', formType: 3}, function(banjikey, index)
+									{
+										$.post("Index/backstage_YKJ",{task:1,banjikey:banjikey},function(result2,status)
+											{
+												var obj2 = JSON.parse(result2); 
+												if(obj2.code==0)
+												{
+													layer.close(index);
+                                 layer.prompt({title: '请输入您的科目名称:', formType: 3}, function(subject, index)
+									           {
+                                    
+													$.post("Index/backstage_YKJ",{task:2,banji:banji,name:name,subject:subject,banjikey:banjikey,yontu:yontu,xuehao:xuehao,password:password},function(result3,status)
+													{ 
+                                    layer.close(index);
+														var obj2 = JSON.parse(result3);
+                                     layer.alert("<em style='color:red; font-size=20px'>" +obj2.msg+ "</em>",{title:'ID'},function(index)
+                                    {
+                                        layer.close(index);
+														layer.msg("正在打开空间....",function(){
+
+																			/*
+																			//iframe关闭自身
+																		var index = parent.layer.getFrameIndex(window.name); //先得到当前iframe层的索引
+																			parent.layer.close(index);
+																			//window.location.href='/func/index_function/info.html';
+																		$.post("/Index/searchClass",{xuehao:xuehao,banjikey:banjikey},function(result,status)
+																			{
+																			var obj3 = JSON.parse(result);
+																			if(obj3.code==0)
+																			{
+																		window.location.href='/mobileorpcController';
+																			}
+																	else
+																	{
+																		layer.msg(obj3.msg);
+																	}
+
+																			});
+																		});
+																	});
+																	});
+																	});
+																}
+																	else
+																	{
+                                                                        
+                                                                        
+																	layer.alert(obj.msg,{skin:'layui-layer-lan',anim:4},function(index)
+                                                {
+                                          	layer.prompt({title: '请输入科目名称', formType: 3},function(subject,index)                  {
+																$.post('Index/backstage_YKJ',{subject:subject,banji:banji,name:name,banjikey:banjikey,yontu:yontu,xuehao:xuehao,password:password,task:1},function(res)
+																	   {  
+                                                                
+                                                                
+                                                    });
+                                                 });
+                                            });
+                                                                        
+																	}
+															});
+														});	
+													});	
+												}
+                                    
+												else
+												{
+															
+													$.post("/Index/backstage_YKJ",{task:'2',name:name,yontu:yontu,xuehao:xuehao,password:password},function(result2,status)
+														{
+														var obj2 = JSON.parse(result2); 
+                                    if(obj2.code==0)
+                                       {	
+                                        layer.alert("<em style='color:red; font-size=20px'>" +obj2.msg+ "</em>",{title:'ID'},function(index)
+                                    {
+                                        layer.close(index);
+                                       	layer.msg("正在打开空间....",function(){
+																			/*
+																			//iframe关闭自身
+																		var index = parent.layer.getFrameIndex(window.name); //先得到当前iframe层的索引
+																			parent.layer.close(index);
+																			///window.location.href='/func/index_function/info.html';
+																				 $.post("/taskShowController/Index",{xuehao:xuehao,password:password},function(result){
+																					 if(result=="ok")
+																						{
+																							var w = ($(window).width() * 1);
+																							var h = ($(window).height() * 1);
+																							var index= layer.open({
+																								resize: false,
+																								title: '个人云空间',
+																								shadeClose: true,
+																								offset: 'b',
+																								fixed: false, //不固定
+																								maxmin: true,
+																								area: [w + 'px', h + 'px'],
+																								type: 2,
+																								content: "/taskShowController/grYKJ",
+																								});
+																							layer.full(index);
+
+																						}
+																					  else
+																						  {
+																							  layer.msg(result);
+																						  }
+
+																					});
+																		});
+																});
+                                       }
+                                    else
+                                    {
+                                         layer.msg(obj2.msg);
+                                    }
+													
+																});
+																
+																
+															
+														}
+                                   }
+                                else
+                                {
+                                  layer.msg("请输入非零密码！");  
+                                }
+													
+													});	
+												   });		
+												});
+											}
+												else
+												{
+													
+													layer.msg("请输入收作业或输入个人！");
+												}
+											
+											
+											});
+										
+							
+							}); 
+					
+    
+	  			} 
+        */
+       
+        
+ 
+        
+        
+function apply()
+ 	{
+	  layui.use(['jquery','layer'], function()
+	{
+	 var $ = layui.jquery,
+	layer = layui.layer;
+  layer.open({
+  type: 1,
+  title: false,
+  closeBtn: 1,
+  anim:4,
+  shadeClose: true,
+  skin: 'layui-layer-molv',
+  content: "<div style=\"text-align:center ;min-width:300px;min-height:300px;background-color: #9a9a9a;\"> <button  onclick=\"javascript:window.location.href='/index/apply?task=1'\" style=\"min-height: 50px; background-color: #adadad; margin-top: 20px;  min-width: 150px; \">申请个人空间</button><br/><button  onclick=\"javascript:window.location.href='/index/apply?task=2'\" style=\"min-height: 50px; background-color: #adadad; margin-top: 20px;  min-width: 150px; \">申请班级空间</button><br/><button  onclick=\"javascript:window.location.href='/index/apply?task=3'\" style=\"min-height: 50px; background-color: #adadad; margin-top: 20px;  min-width: 150px; \">申请科目空间</button></div>"
+
+							
+						 
+        });
+          
+          
+      
+    
+	  			});
+        } 
+	  				 
+			
+//-----------------------------------------结束---------------------------------------------------------------
+		
+//-----------------------------------------作业云空间方法---------------------------------------------------------------
+		function classYKJ()
+		{
+			layui.use(['jquery','layer'], function()
+				{
+				 var $ = layui.jquery,
+				layer = layui.layer;
+				$.post("index/searchClass",function(result,status)
+				{
+					var obj = JSON.parse(result);
+							if(obj.code==0)
+							   {
+							   window.location.href="mobileorpcController/Index";
+							   }
+                    else
+                    {
+						  layer.prompt({title: '请输入班级口令', formType: 3}, function(banjikey, index)//弹出窗口获取学号
+							{
+                        
+                     $.post("index/searchClass",{banjikey:banjikey},function(result,status)
+							     {
+                            
+										var obj = JSON.parse(result);
+										if(obj.code==0)
+                            {
+                             window.location.href="mobileorpcController/Index";
+                           
+											}
+											else{layer.msg(obj.msg);}
+
+
+						
+						});
+							 
+									
+					
+					
+				});}
+                    
+			});
+			
+		});}  
+//-----------------------------------------结束---------------------------------------------------------------
+
+		function classYKJ_(banjikey,subject)
+        {
+            	$.post("index/searchClass",{task:1,subject:subject,banjikey:banjikey},function(result,status)
+							{
+										var obj = JSON.parse(result);
+										if(obj.code==0)
+										   {
+												window.location.href="mobileorpcController/Index";
+											}
+											else{layer.msg(obj.msg);}
+
+
+						
+						});
+        }
+        
+        
+        
+		
+//-----------------------------------------交作业云空间登录验证方法---------------------------------------------------------------
+		function login()
+		{
+			 layui.use(['jquery','layer'], function()
+				{
+				 var $ = layui.jquery,
+				layer = layui.layer;
+				layer.prompt({title: '请输入学号', formType: 3}, function(xuehao, index)//弹出窗口获取学号
+				{
+					layer.close(index);//关闭窗口
+					layer.prompt({title: '请输入密码', formType: 3}, function(password, index)//弹出窗口获取学号
+					{
+						layer.close(index);//关闭窗口
+							$.post("/func/index_function/backstage_YKJ.php",{task:'4',xuehao:xuehao,password:password},function(result,status)
+								 {
+									var obj = JSON.parse(result); 
+									console.log(obj.state);
+									layer.msg(obj.state,function()
+											  {
+										if(obj.state=="登陆成功")
+									   {
+										   
+										layer.msg('功能还在开发中。。。。');
+									   }
+
+
+
+									});
+
+
+
+								});
+
+
+					});
+				});
+			});
+
+			
+		}
+//-----------------------------------------结束---------------------------------------------------------------
+		
+		var a_idx=0;
+    	jQuery(document).ready(function($){
+			addTips = function(e){
+        var a= new Array("相遇", "不一定", "有结局", "但", "一定有", "意义", "爱意", "随风起", "风止", "意难平", "黄昏","与落日","晚风","也思你","谢谢","你来过","我","一直在");
+        var i=$("<span />").text(a[a_idx]);
+        a_idx=(a_idx+1)%a.length;
+        var x=e.pageX,y=e.pageY;
+        i.css({
+          "z-index": 0,
+          "top":y-20,
+          "left":x,
+          "position":"absolute",
+          "font-weight":"bold",
+          "color":"#ff6651"
+        });
+ 
+        $("body").append(i);
+        i.animate({"top": y-180,"opacity":0},1500,function(){i.remove()})
+        return false;
+      }
+      //绑定鼠标左键
+      $("body").click(addTips);
+      //绑定鼠标左键
+      $("body").bind("contextmenu",addTips)
+  });
+    </script>
+
+    <script>
+//-----------------------------------------canvas背景js---------------------------------------------------------------
+      function o(w,v,i){
+          return w.getAttribute(v)||i
+      }
+      function j(i){
+          return document.getElementsByTagName(i)
+      }
+      function l(){
+          var i=j("script"),w=i.length,v=i[w-1];
+          return {l:w,z:o(v,"zIndex",-1),o:o(v,"opacity",0.5),c:o(v,"color","0,0,0"),n:o(v,"count",99)}
+      }
+      function k(){
+          r=u.width=window.innerWidth||document.documentElement.clientWidth||document.body.clientWidth,
+          n=u.height=window.innerHeight||document.documentElement.clientHeight||document.body.clientHeight
+      }
+      function b(){
+          e.clearRect(0,0,r,n);
+          var w=[f].concat(t);
+          var x,v,A,B,z,y;
+          t.forEach(function(i){
+              i.x+=i.xa,
+              i.y+=i.ya,
+              i.xa*=i.x>r||i.x<0?-1:1,
+              i.ya*=i.y>n||i.y<0?-1:1,
+              e.fillRect(i.x-0.5,i.y-0.5,1,1);
+              for(v=0;v<w.length;v++){
+                  x=w[v];
+                  if(i!==x&&null!==x.x&&null!==x.y){
+                      B=i.x-x.x,z=i.y-x.y,y=B*B+z*z;
+                      y<x.max&&(x===f&&y>=x.max/2&&(i.x-=0.03*B,i.y-=0.03*z),A=(x.max-y)/x.max,e.beginPath(),e.lineWidth=A/2,e.strokeStyle="rgba("+s.c+","+(A+0.2)+")",e.moveTo(i.x,i.y),e.lineTo(x.x,x.y),e.stroke())
+                  }
+              }
+              w.splice(w.indexOf(i),1)
+          }),m(b)
+      }
+      var u=document.createElement("canvas"),s=l(),c="c_n"+s.l,e=u.getContext("2d"),r,n,
+      m=window.requestAnimationFrame||window.webkitRequestAnimationFrame||window.mozRequestAnimationFrame||window.oRequestAnimationFrame||window.msRequestAnimationFrame||function(i){
+          window.setTimeout(i,1000/45)
+      },
+      a=Math.random,f={x:null,y:null,max:20000};
+      u.className="particle_canvas";
+      var browserName = navigator.userAgent.toLowerCase();
+      if (/msie/i.test(browserName) && !/opera/.test(browserName)) {
+          u.className += ' ie10_gte';
+      };
+      u.id=c;
+      u.style.cssText="position:fixed;top:0;left:0;z-index:"+s.z+";opacity:"+s.o;
+      j("body")[0].appendChild(u);
+      k(),window.onresize=k;
+      window.onmousemove=function(i){
+          i=i||window.event,
+          f.x=i.clientX,
+          f.y=i.clientY
+      },
+      window.onmouseout=function(){
+          f.x=null,
+          f.y=null
+      };
+      for(var t=[],p=0;s.n>p;p++){
+          var h=a()*r,
+          g=a()*n,
+          q=2*a()-1,
+          d=2*a()-1;
+          t.push({x:h,y:g,xa:q,ya:d,max:6000})
+      }
+      setTimeout(function(){b()},100)
+//-----------------------------------------结束---------------------------------------------------------------
+	</script>
+</html>

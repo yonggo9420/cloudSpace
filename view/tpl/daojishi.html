@@ -1,0 +1,163 @@
+<script src="/static/js/TweenMax.min.js"></script>
+  <div class="daojishi" style="height: 15%;">
+	  <p id="1" style="text-align: center; font-size: 20px; font-weight: 600" ><span  style="font-size: 20px;font-weight: 200;color: red;">{$zyname}</span>剩余时间:</p>
+  <div id="daojishi" class="countdown-wrapper">
+    <div class="days time-el">
+      <output id="days">
+        <div class="digit">
+         <div class="next">
+        <span class="top"><span class="inner"></span></span>
+        <span class="bottom"><span class="inner"></span></span>
+          </div>
+         <div class="current">
+        <span class="top"><span class="inner"></span></span>
+        <span class="bottom"><span class="inner"></span></span>
+          </div>
+      </div>
+      </output>
+     
+    </div>
+    <div class="hours time-el">
+      <output id="hours">
+       <div class="digit">
+         <div class="next">
+        <span class="top"><span class="inner"></span></span>
+        <span class="bottom"><span class="inner"></span></span>
+          </div>
+         <div class="current">
+        <span class="top"><span class="inner"></span></span>
+        <span class="bottom"><span class="inner"></span></span>
+          </div>
+      </div>
+      </output>
+      
+    </div>
+    <div class="minutes time-el">
+      <output id="minutes">
+        <div class="digit">
+         <div class="next">
+        <span class="top"><span class="inner"></span></span>
+        <span class="bottom"><span class="inner"></span></span>
+          </div>
+         <div class="current">
+        <span class="top"><span class="inner"></span></span>
+        <span class="bottom"><span class="inner"></span></span>
+          </div>
+      </div>
+      </output>
+   
+    </div>
+    <div class="seconds time-el">
+      <output id="seconds">
+       <div class="digit">
+         <div class="next">
+        <span class="top"><span class="inner"></span></span>
+        <span class="bottom"><span class="inner"></span></span>
+          </div>
+         <div class="current">
+        <span class="top"><span class="inner"></span></span>
+        <span class="bottom"><span class="inner"></span></span>
+          </div>
+      </div>
+      </output>
+
+    </div>
+  </div>
+</div>
+
+<script>
+
+let targetTime = '{$task_time}';
+
+
+let oneSecond = 1000;
+let oneMinute = oneSecond * 60;
+let oneHour = oneMinute * 60;
+let oneDay = oneHour * 24;
+
+let $daysEl = $(".time-el #days");
+let $hoursEl = $(".time-el #hours");
+let $minutesEl = $(".time-el #minutes");
+let $secondsEl = $(".time-el #seconds");
+
+function startCountDown() {
+  updateTick();
+  let timeInterval = setInterval(updateTick, oneSecond);
+  function updateTick() {
+    let timeLeft = Date.parse(targetTime) - Date.parse(new Date());
+    // only allow flip if the value has changed
+    if (+$daysEl.find('.next .top .inner').html() !== +Math.floor(timeLeft / oneDay)) flipMe($daysEl);
+    if (+$hoursEl.find('.next .top .inner').html() !== +Math.floor(timeLeft % oneDay / oneHour)) flipMe($hoursEl);
+    if (+$minutesEl.find('.next .top .inner').html() !== +Math.floor(timeLeft % oneHour / oneMinute)) flipMe($minutesEl);
+    if (+$secondsEl.find('.next .top .inner').html() !== +Math.floor(timeLeft % oneMinute / oneSecond)) flipMe($secondsEl);
+    // update values
+    $daysEl.find('.next .top .inner, .current .bottom .inner').html(Math.floor(timeLeft / oneDay));
+    $hoursEl.find('.next .top .inner, .current .bottom .inner').html(("0" + Math.floor(timeLeft % oneDay / oneHour)).slice(-2));
+    $minutesEl.find('.next .top .inner, .current .bottom .inner').html(("0" + Math.floor(timeLeft % oneHour / oneMinute)).slice(-2));
+    $secondsEl.find('.next .top .inner, .current .bottom .inner').html(("0" + Math.floor(timeLeft % oneMinute / oneSecond)).slice(-2));
+
+
+    function flipMe(el) {
+      let tl = new TimelineMax().
+      to(el.find('.current .top'), 0.9, { rotationX: -180, ease: Power1.easeInOut, onComplete: function () {
+          $daysEl.find('.current .top .inner, .next .bottom .inner').html(Math.floor(timeLeft / oneDay));
+          $hoursEl.find('.current .top .inner, .next .bottom .inner').html(("0" + Math.floor(timeLeft % oneDay / oneHour)).slice(-2));
+          $minutesEl.find('.current .top .inner, .next .bottom .inner').html(("0" + Math.floor(timeLeft % oneHour / oneMinute)).slice(-2));
+          $secondsEl.find('.current .top .inner, .next .bottom .inner').html(("0" + Math.floor(timeLeft % oneMinute / oneSecond)).slice(-2));
+          TweenMax.set(el.find('.current .top'), { rotationX: 0 });
+        } }, 0).
+      to(el.find('.next .top'), 0.9, { rotationX: 0, ease: Power1.easeInOut, clearProps: 'all' }, 0);
+    }
+
+    if (timeLeft <= 0) clearInterval(timeInterval);
+  }
+}
+
+
+const LetItSnow = function () {
+  let canvas;
+  let ctx;
+  let durationLimit_ms;
+
+  const snowflakes = [];
+  const count = 150;
+  let paused = false;
+  let complete = false;
+
+  function update(time) {
+    snowflakes.forEach(function (el) {
+      el.update(time);
+    });
+  }
+
+  
+  function update(time) {
+    animateSnowFall(time);
+  }
+
+  return {
+    update: update,
+    draw: draw,
+    slowDownAndPause: slowDownAndPause };
+
+}
+
+
+$(function () {
+	if('{$stop}'=='1')
+	   {
+	    $('#daojishi').remove();
+		$('#1').empty();
+		$('#1').html("<span style=\"font-size: 20px;font-weight: 200;color: red;\">{$zyname}</span>已结束");
+		
+	   }
+	   else
+	   {
+	    startCountDown();
+	   }
+ 
+
+});</script>
+
+	
+

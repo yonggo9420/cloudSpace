@@ -1,0 +1,124 @@
+
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0,user-scalable=no,minimal-ui">
+  <link rel="stylesheet" href="/static/css/index_apply/apply.css">
+     <script src="/static/layui.js"></script>
+</head>
+<body>
+
+<div class="login-box">
+  <h2>班级空间申请</h2>
+  <form>
+   <div class="user-box">
+      <input type="text" id="name" required="required">
+      <label>姓名</label>
+    </div>
+    <div class="user-box">
+      <input type="number" id="xuehao" required="required">
+      <label>学号</label>
+    </div>    
+    <div class="user-box">
+      <input type="text" id="password" required="required">
+      <label>密码</label>
+    </div>
+      <div class="user-box">
+      <input type="text" id="banji" required="required">
+      <label>所在班级(例:xxx类xxx班)</label>
+    </div>
+      <div class="user-box">
+      <input type="text" id="subject" required="required">
+      <label>科目名称</label>
+    </div>
+      <div class="user-box">
+      <input type="text" id="banjikey" required="required">
+      <label>班级的统一口令</label>
+    </div>
+        <input hidden id="yontu" value="收作业" >
+   <a onClick="index()" >
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+       申请
+    </a>
+  </form>
+</div>
+
+  
+</body>
+    <script>
+    function index(){
+    layui.use(['layer','jquery'],function(){
+              var $ =layui.jquery,
+              layer = layui.layer;
+             
+        if($('#name').val()&&$('#xuehao').val()&&$('#password').val()&&$('#banji').val()&&$('#banjikey').val()&&$('#subject').val())
+           {
+              var name =$('#name').val();
+              var banji =$('#banji').val();
+              var banjikey =$('#banjikey').val();
+              var subject =$('#subject').val();
+              var xuehao =$('#xuehao').val();
+              var password =$('#password').val();
+              var yontu =$('#yontu').val();
+        $.post("/Index/backstage_YKJ",{task:'2',banji:banji,subject:subject,banjikey:banjikey,name:name,yontu:yontu,xuehao:xuehao,password:password},function(result,status)
+				{ 
+            var obj =JSON.parse(result);
+             if(obj.code==0)
+           {
+              layer.alert("<em style='color:red; font-size=20px'>" +obj.msg+ "</em>",{title:'ID'},function(index)
+                {
+                 layer.close(index);
+				      layer.msg("正在打开空间....",function(){
+                	$.post("/Index/searchClass",{task:1,subject:subject,banjikey:banjikey},function(result,status)
+								{
+									var obj1 = JSON.parse(result);
+									if(obj1.code==0)
+										{
+											window.location.href='/mobileorpcController';
+										}
+										else
+										{
+										   layer.msg(obj1.msg);
+										}
+
+																			});
+                      
+                          });
+              });
+                          
+           }
+            else
+            {
+                layer.msg(obj.msg);
+            }
+        });	
+           }else
+            {
+                layer.msg('请将表单填写完整！');
+                
+            }
+    
+        
+  
+              
+              
+              });
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    </script>
+</html>
